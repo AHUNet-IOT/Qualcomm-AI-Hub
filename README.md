@@ -85,9 +85,7 @@ export QAI_HUB_API_KEY="你的 API Key"
 
 - V2Ray / 其他：10809
 
-注意：教程中使用的设备 `SA8295P ADP` 仅为示例，实际需根据自身需求在 Qualcomm AI Hub 官网上选择对应设备。官网设备列表会随版本更新不断迭代，需及时关注官网最新设备信息，避免因设备名称变更导致操作失败。
 
-官网设备选择界面截图（占位符）：
 
 ```python
 def setup_proxy(proxy_port: int = 10809):
@@ -96,6 +94,14 @@ def setup_proxy(proxy_port: int = 10809):
 
 setup_proxy(10809)
 ```
+
+
+注意：教程中使用的设备 `SA8295P ADP` 仅为示例，实际需根据自身需求在 Qualcomm AI Hub 官网上选择对应设备。官网设备列表会随版本更新不断迭代，需及时关注官网最新设备信息，避免因设备名称变更导致操作失败。
+
+下图为 Qualcomm AI Hub 官网设备选择界面截图，清晰展示了可选择的各类高通芯片设备列表，开发者可在此界面筛选目标设备、复制设备名称，用于后续模型编译配置。
+
+<img width="1257" height="602" alt="image" src="https://github.com/user-attachments/assets/40a93e50-dfe0-4ece-9dd7-70ec8231ac80" />
+
 
 ---
 
@@ -144,7 +150,7 @@ import h5py
 import qai_hub as hub
 
 # ======================
-# 代理设置（国内必配）
+# 代理设置
 # ======================
 def setup_proxy(proxy_port: int = 10809) -> None:
     os.environ["http_proxy"] = f"http://127.0.0.1:{proxy_port}"
@@ -154,7 +160,7 @@ def setup_proxy(proxy_port: int = 10809) -> None:
 setup_proxy(10809)  # 替换为你的代理端口
 
 # ======================
-# 模型编译（可替换芯片与输入维度）
+# 模型编译
 # ======================
 def load_and_compile_model(model_path: str, target_device: str, input_shape: tuple):
     """
@@ -188,7 +194,7 @@ def load_and_compile_model(model_path: str, target_device: str, input_shape: tup
         return None
 
 # ======================
-# 性能分析（适配任意芯片）
+# 性能分析
 # ======================
 def profile_model(model, target_device: str):
     try:
@@ -217,7 +223,7 @@ def profile_model(model, target_device: str):
         return 0, 0, 0
 
 # ======================
-# 云端推理（适配任意输入维度）
+# 云端推理
 # ======================
 def run_inference(model, input_shape: tuple):
     # 生成与实际输入规格一致的模拟输入（替换为你的输入维度）
@@ -264,7 +270,7 @@ def run_inference(model, input_shape: tuple):
         return None
 
 # ======================
-# 生成报告（通用版）
+# 生成报告
 # ======================
 def generate_report(logits, chip_latency_ms: float, chip_mem_mb: float, p50_us: int, target_device: str):
     if logits is None:
@@ -417,16 +423,3 @@ python qai_hub_deploy.py
 - 免费版 Qualcomm AI Hub 额度可满足开发测试，无需付费即可完成所有操作
 
 ---
-
-## 10. 扩展说明
-
-本教程为通用版，可适配：
-
-- 任意高通芯片（如 SA8295P、SA8155P、SA6155P 等，从官网获取设备名称即可）
-
-- 任意输入维度（如 (1,3,224,224)、(1,1,64) 等，修改输入形状参数即可）
-
-- 任意 PyTorch 分类模型（只需通过 torch.jit.trace 保存为 TorchScript 格式）
-
-如需适配回归、检测等其他任务，可修改 `generate_report` 函数中的结果分析部分，其余流程无需调整。
-> （注：文档部分内容可能由 AI 生成）
