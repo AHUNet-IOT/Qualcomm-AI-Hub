@@ -9,7 +9,7 @@
 Qualcomm AI Hub end-to-end model deployment tutorial: Supports cloud compilation for any PyTorch model, processor performance analysis, cloud inference verification, and exports directly deployable DLC models. Includes complete environment setup, model saving (torch.jit.trace), proxy configuration, common issue solutions, and reusable scripts. Works with various chips and input dimensions; beginners can get started with one click.
 
 > Suitable for cloud compilation, processor performance testing, inference validation of any PyTorch model, and exporting DLC models deployable to various Qualcomm chips.
-> Note: This tutorial uses SA8295P ADP chip and 38-dimensional input as examples; you can replace them with any chip and input dimension as needed.
+> Note: This tutorial uses SA8295P ADP chip and 38-dimensional input as examples; you can replace them with any chip and input dimension as needed.(38-dimensional input: The feature dimension of one dataset sample is 38, meaning each input contains 38 feature values.)
 
 ---
 
