@@ -230,8 +230,14 @@ def profile_model(model, target_device: str):
 # 云端推理
 # ======================
 def run_inference(model, input_shape: tuple):
-    # 生成与实际输入规格一致的模拟输入（替换为你的输入维度）
-    input_array = np.random.rand(*input_shape).astype(np.float32)
+   
+    X = np.load("label_know_data.npz")["x"] #读取真实数据
+    X = X.reshape((X.shape[0], 1, X.shape[1]))  
+    input_array = X[0:1].astype(np.float32)      
+
+    print(f"使用真实数据，shape: {input_array.shape}")
+    
+
     print(f"Generated input data, shape: {input_array.shape}")
     
     try:
