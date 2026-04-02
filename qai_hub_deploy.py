@@ -90,7 +90,7 @@ def profile_model(model, target_device: str):
 # 云端推理
 # ======================
 def run_inference(model, input_shape: tuple):
-    # 生成与实际输入规格一致的模拟输入（替换为你的输入维度）
+    # 读取数据集中的数据
     input_array = np.load("EDGE_1000.npz")["data"][0:1].reshape(1, 1, 24).astype(np.float32)
     print(f"Generated input data, shape: {input_array.shape}")
     
