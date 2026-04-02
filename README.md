@@ -98,8 +98,8 @@ from your_model import YourModel  # Replace with your model import path (e.g., S
 model = YourModel(...)  # Fill in your model parameters
 model.eval()  # Must switch to evaluation mode
 
-# 2. Generate dummy input matching actual input specifications (example: (1,1,38))
-dummy_input = torch.randn(1, 1, 38)  # Replace with your input shape (e.g., (1,3,224,224))
+# 2. Generate dummy input matching actual input specifications (example: (1,1,24))
+dummy_input = torch.randn(1, 1,24)  # Replace with your input shape (e.g., (1,3,224,224))
 
 # 3. Trace and save model with torch.jit.trace (core step)
 traced_model = torch.jit.trace(model, dummy_input)
