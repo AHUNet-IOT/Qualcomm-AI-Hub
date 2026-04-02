@@ -289,7 +289,7 @@ if __name__ == "__main__":
 ```
 
 Note: This script is universal. Modify the "Customizable Parameters" section to adapt to any Qualcomm chip and input dimension.
-SA8295P ADP + 38-dimensional input is only an example; not limited to this configuration.
+SA8295P ADP + 24-dimensional input is only an example; not limited to this configuration.
 
 ---
 
